@@ -1,0 +1,190 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh; /* Full height */
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 90%; /* Larger width since we are removing the history and file explorer */
+    height: 90vh; /* Full height for a focused view */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Full Chat and Photo Section */
+.chat-photo-section-full {
+    display: flex;
+    width: 100%; /* Take up full width */
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Chat Area */
+.chat-area {
+    width: 48%; /* Take up half the screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure input stays within area */
+    background-color: #ffffff;
+}
+
+.chat-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header h2 {
+    margin: 0;
+}
+
+.profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chat-body {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    max-width: 70%;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bot-message {
+    background-color: #e5e5e5;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: #4CAF50;
+    color: white;
+    align-self: flex-end;
+}
+
+/* Chat Input */
+.chat-input {
+    display: flex;
+    padding: 15px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    width: 100%; /* Ensure the input takes full width of the chat area */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.chat-input .attach-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.chat-input button {
+    margin-left: 10px;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #45a049;
+}
+
+/* Photo Inspection Area */
+.photo-inspection {
+    width: 48%; /* Take up half the screen */
+    background-color: #f1f1f1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.photo-inspection-header h2 {
+    margin: 0 0 20px;
+}
+
+.photo-display img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Photo Query Input */
+.photo-query-input {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.photo-query-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.photo-query-input button {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.photo-query-input button:hover {
+    background-color: #45a049;
+}
