@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Chat and Photo Inspection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Chat and Photo Inspection Area only -->
+        <div class="chat-photo-section-full">
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="chat-header">
+                    <h2>Chatbot</h2>
+                    <div class="profile-icon">
+                        <img src="https://via.placeholder.com/40" alt="Profile Icon">
+                    </div>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-message bot-message">
+                        Hello! How can I help you today?
+                    </div>
+                    <div class="chat-message user-message">
+                        I have a question.
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <button class="attach-btn">📎</button>
+                    <input type="text" placeholder="Type a message..." />
+                    <button>Send</button>
+                </div>
+            </div>
+
+            <!-- Photo Inspection Area -->
+            <div class="photo-inspection">
+                <div class="photo-inspection-header">
+                    <h2>Photo Inspection</h2>
+                </div>
+                <div class="photo-display">
+                    <img src="https://via.placeholder.com/600x400" alt="Selected Photo" id="inspected-photo">
+                </div>
+                <!-- Search bar for photo queries -->
+                <div class="photo-query-input">
+                    <input type="text" placeholder="Ask about this photo or query new ones..." />
+                    <button>Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the photo selection logic (if needed)
+        const inspectedPhoto = document.getElementById('inspected-photo');
+
+        // Simulating selecting an image
+        document.body.addEventListener('click', function (event) {
+            if (event.target.tagName === 'LI') {
+                inspectedPhoto.src = `https://via.placeholder.com/600x400?text=Selected+${event.target.textContent}`;
+            }
+        });
+    </script>
+</body>
+</html>
