@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Inspection with Chat History</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Chat History Section -->
+        <div class="chat-history">
+            <div class="history-header">
+                <h2>History</h2>
+                <button class="settings-btn">⚙️</button>
+            </div>
+            <ul>
+                <li>Chat Session 1</li>
+                <li>Chat Session 2</li>
+                <li>Chat Session 3</li>
+            </ul>
+        </div>
+
+        <!-- Chat and Photo Inspection Area -->
+        <div class="chat-photo-section-full">
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="chat-header">
+                    <h2>Chatbot</h2>
+                    <div class="profile-icon">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMHBhUIBxIWFhMVFhobGRgYGRUgIRsgHRcdICAXGRgdHighHiYoHx4ZJTEiJSkrLi4xICIzOD8tNygtLi0BCgoKBQwLFQUQFisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAMgAyAMBIgACEQEDEQH/xAAcAAEAAwEBAQEBAAAAAAAAAAAABgcIBQQDAgH/xAA/EAABAwMBBQQIBAMHBQAAAAABAAIDBAURBgcSITFRE4GCkRUiIzJBYXGSFEJyoRay0TNDUlNUk6JiY7HBwv/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AvFERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERBxNVabj1PQNoqySVga/eBidunOCMHgQRxVEbS9Nu0jeWQUkszoZGbzHPec5Bw5pIx8j3rSSgm2Kw+mNIPqIhmSnPatxzwB64+3j4Qgz1+Lk/zH/c7+qm+yq0w6ku76W5zztkYGyR7kpbvBrvWB+PPdPDHxUCXV0reTYNQw3RmcRvG8OrTwcPtJRWsVANUbM4rvUT3KGoqWzyAua3tPU3t3gMYzjlwyp3DIJohLEQWuAII+IPIr6IjID6iWN5ZI94IJBG87gRzHNfz8XJ/mP+539VMtsNi9D6wfPEMR1A7Vv15PH3cfEoOitHbLbHT0dmbeLZLO/wDERsLhLJvBpHNoAAGQ7eGVOFT+wO+70M1gmPu+1j+hwHjz3T4irgRBERBBtqVkpqq0OvN1lnZ+HjduiJ+6HF3JpBB4l2BlfLY3ZH2zSorKwu7SpIkwSThuMMHH5Zd4l4doTzqfV1Lo2nPswRNU4+DRyae7+ZqsmNgjYGMGAAAB0wg/ap/bnqh1O+Kx295a4YlkLSQRj3G5B65d3NVr3GsZbqF9bVHDI2lzj8mjJWUb9dX3u8y3Op96V5djoPg3uGAg05o6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8xXODnE8Ox1H5m94yO9axpKltZSsqqc5Y9oc09QRkFEeLUtpbfbDNa5uUjCAeh5td3OwVlCogdTVDoKgYexxa4dCDgjzWwlnnbXYvReq/wAfEPZ1Ld7xt4PH8ru9BAGOMbw+M4IIIPQjkVqrRt7GodNQ3NvvPYN8dHjg4eYKyord2B33cqJrDMeDvax/UYDx5bp7iirpRERBERAREQVbtm0fLfHwXGzxl8oPZPA/wuOWuPyac5P/AFfJT/TdnZYbHFa6blGwAnqebnd5yV00QEREH4lYJYzHIMgggjqCqh0Js6ktmv5amujIp6ZxMDjyeXe4R+luc/PCuFEBcTWNdNb9OTT2qN8k5buxtY0uO87gHYHwHPuXbRBV2y2uqLVBFYZrXURhxe6SofkAuOTvuBb8g3n0VooiAiIg42qbrLZ7X+JoaSSqdvBpjj54OcuPA8B8h8VnSs0lWzVj5aW3VLGOc4taY3ndBOQ3OOOFqREGVP4OuH+hqf8Aaf8A0Vm6M1NcbBYo7TVWiql7M4a8BzfVJ4N4t+HLn0VvIg/IOW5VTbXJam+B1mprZUP7J7XR1DRkH1fWAAHIgkc/grbRBlT+Drh/oan/AGn/ANF0NP2a5WC9RXWChqSYng47KT1hyc3l8RkLTaII5pHUE99EhuNDLS7m7u9offznOMgHhj90UjRAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQf/Z" alt="Profile Icon">
+                    </div>
+                </div>
+                <div class="chat-body">
+                    <div class="chat-message bot-message">
+                        Hello! How can I help you today?
+                    </div>
+                    <div class="chat-message user-message">
+                        I have a question.
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <button class="attach-btn">📎</button>
+                    <input type="text" placeholder="Type a message..." />
+                    <button>Send</button>
+                </div>
+            </div>
+
+            <!-- Photo Inspection Area -->
+            <div class="photo-inspection">
+                <div class="photo-inspection-header">
+                    <h2>Results</h2>
+                </div>
+                <div class="photo-results">
+                    <!-- Thumbnail section for photos -->
+                    <div class="photo-thumbnails">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                        </div>
+                        <!-- Add more thumbnails here -->
+                    </div>
+                    <button class="show-more-btn">Show More</button>
+                    <!-- List section for photo descriptions -->
+                    <div class="photo-list">
+                        <ul>
+                            <li>ABXY11223344A</li>
+                            <li>ABXY11223344B</li>
+                            <li>ABXY11223344C</li>
+                            <li>ABXY11223344D</li>
+                        </ul>
+                        <ul>
+                            <li>ABXY11223344A</li>
+                            <li>ABXY11223344B</li>
+                            <li>ABXY11223344C</li>
+                            <li>ABXY11223344D</li>
+                        </ul>
+                        <ul>
+                            <li>ABXY11223344A</li>
+                            <li>ABXY11223344B</li>
+                            <li>ABXY11223344C</li>
+                            <li>ABXY11223344D</li>
+                        </ul>
+                    </div>
+                    <button class="show-more-btn">Show More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
