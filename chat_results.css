@@ -282,3 +282,8 @@ body {
 .show-more-btn:hover {
     background-color: #0E0F4F; /* Darker sky blue hover */
 }
+
+.chat-history ul li.active {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Inspection with Chat History</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chat_results.css">
 </head>
 <body>
     <div class="container">
@@ -20,7 +20,7 @@
                 <li>Chat Session 3</li>
             </ul>
         </div>
-
+        
         <!-- Chat and Photo Inspection Area -->
         <div class="chat-photo-section-full">
             <!-- Chat Area -->
@@ -131,5 +131,118 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatBody = document.querySelector('.chat-body');
+            const chatInput = document.querySelector('.chat-input input');
+            const sendButton = document.querySelector('.chat-input button');
+            const chatList = document.querySelector('.chat-history ul');
+            const apiKey = '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';
+    
+            // Clear the chat history and reset sessions on launch
+            chatBody.innerHTML = '';
+            localStorage.removeItem('chatSessions');
+            let currentSession = '';
+            let sessions = {};
+    
+            function updateChatList() {
+                chatList.innerHTML = '';
+                Object.keys(sessions).forEach(session => {
+                    const li = document.createElement('li');
+                    li.textContent = session;
+                    li.addEventListener('click', () => loadSession(session));
+                    chatList.appendChild(li);
+                });
+            }
+    
+            function loadSession(sessionName) {
+                currentSession = sessionName;
+                chatBody.innerHTML = ''; // Clear the chat body first
+                if (sessions[sessionName]) {
+                    sessions[sessionName].forEach(msg => {
+                        // Check if the message is already in chatBody
+                        const messageExists = Array.from(chatBody.children).some(child => child.textContent === msg.content);
+                        if (!messageExists) {
+                            addMessage(msg.content, msg.isUser);
+                        }
+                    });
+                }
+            }
+    
+            function addMessage(content, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('chat-message', isUser ? 'user-message' : 'bot-message');
+                messageDiv.textContent = content;
+                chatBody.appendChild(messageDiv);
+                chatBody.scrollTop = chatBody.scrollHeight;
+    
+                if (currentSession) {
+                    if (!sessions[currentSession]) {
+                        sessions[currentSession] = [];
+                    }
+                    sessions[currentSession].push({ content, isUser });
+                    localStorage.setItem('chatSessions', JSON.stringify(sessions));
+                }
+            }
+    
+            async function sendMessage() {
+                const userMessage = chatInput.value.trim();
+                if (userMessage) {
+                    addMessage(userMessage, true);
+                    chatInput.value = '';
+                    
+                    try {
+                        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${apiKey}`,
+                            },
+                            body: JSON.stringify({
+                                model: 'gpt-3.5-turbo',
+                                messages: [{ role: 'user', content: userMessage }],
+                            }),
+                        });
+    
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+    
+                        const data = await response.json();
+                        const botResponse = data.choices[0].message.content;
+                        addMessage(botResponse);
+                    } catch (error) {
+                        console.error('Error:', error);
+                        addMessage('Error: Unable to communicate with the chatbot.');
+                    }
+                }
+            }
+    
+            sendButton.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+    
+            // Add new chat session
+            const addSessionBtn = document.createElement('button');
+            addSessionBtn.textContent = 'New Chat';
+            addSessionBtn.addEventListener('click', () => {
+                const sessionName = prompt('Enter a name for the new chat session:');
+                if (sessionName && !sessions[sessionName]) {
+                    sessions[sessionName] = [];
+                    localStorage.setItem('chatSessions', JSON.stringify(sessions));
+                    updateChatList();
+                    loadSession(sessionName);
+                }
+            });
+            document.querySelector('.history-header').appendChild(addSessionBtn);
+    
+            updateChatList();
+        });
+    </script>    
 </body>
 </html>
