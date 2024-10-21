@@ -55,55 +55,10 @@
                     <!-- Thumbnail section for photos -->
                     <div class="photo-thumbnails">
                         <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 1">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="https://via.placeholder.com/100" alt="Thumbnail 2">
+                            <img src="https://weavermanufacturing.com/wp-content/uploads/2024/01/Group-1.png" alt="Thumbnail 1" data-src="https://weavermanufacturing.com/wp-content/uploads/2024/01/Group-1.png" class="thumbnail-image">
                         </div>
                         <!-- Add more thumbnails here -->
-                    </div>
+                    </div>                    
                     <button class="show-more-btn">Show More</button>
                     <!-- List section for photo descriptions -->
                     <div class="photo-list">
@@ -135,12 +90,16 @@
     <script>
         // Wait for the DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
-            const chatBody = document.querySelector('.chat-body');
+            if (!isUserLoggedIn()) {
+                // Redirect to the login page
+                window.location.href = 'login.html';
+            } else {
+                const chatBody = document.querySelector('.chat-body');
             const chatInput = document.querySelector('.chat-input input');
             const sendButton = document.querySelector('.chat-input button');
             const chatList = document.querySelector('.chat-history ul');
             const apiKey = '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';
-    
+            // ^^ API key
             // Clear the chat history and reset sessions on launch
             chatBody.innerHTML = '';
             localStorage.removeItem('chatSessions');
@@ -159,7 +118,7 @@
     
             function loadSession(sessionName) {
                 currentSession = sessionName;
-                chatBody.innerHTML = ''; // Clear the chat body first
+                chatBody.innerHTML = ''; 
                 if (sessions[sessionName]) {
                     sessions[sessionName].forEach(msg => {
                         // Check if the message is already in chatBody
@@ -242,7 +201,31 @@
             document.querySelector('.history-header').appendChild(addSessionBtn);
     
             updateChatList();
+            const thumbnailImages = document.querySelectorAll('.thumbnail-image');
+            thumbnailImages.forEach(image => {
+                image.addEventListener('click', showExpandedImage);
+            });
+
+            function showExpandedImage(event) {
+                const expandedImage = document.createElement('div');
+                expandedImage.classList.add('expanded-image');
+
+                const img = document.createElement('img');
+                img.src = event.target.dataset.src;
+                expandedImage.appendChild(img);
+
+                expandedImage.addEventListener('click', () => {
+                    expandedImage.remove();
+                });
+
+                document.body.appendChild(expandedImage);
+            }
+            }
         });
+        function isUserLoggedIn() {
+            // Check the localStorage or cookies for the login flag
+            return localStorage.getItem('isLoggedIn') === 'true';
+        }
     </script>    
 </body>
 </html>
